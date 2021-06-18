@@ -14,10 +14,10 @@ public class Tablero {
         crearFichas(fichasJugador, Color.BLACK);
         crearFichas(fichasOponente, Color.RED);
         llenarCasillas();
-        refrescarTablero();
         System.out.println();
         fichasIniciales(fichasJugador, false);
         fichasIniciales(fichasOponente, true);
+        System.out.println("\n---------------TABLERO DE DAMAS ESPAÑOLAS----------------\n");
         refrescarTablero();
 
     }
