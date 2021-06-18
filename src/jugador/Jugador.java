@@ -1,9 +1,11 @@
 package src.jugador;
 
 import src.juego.ManejoInfo;
+import src.tablero.Ficha;
 
 public class Jugador {
 
+    private Ficha[] fichas;
     private String nombre;
     private int perdidas, ganadas, puntuacion;
 
@@ -13,6 +15,7 @@ public class Jugador {
 
     public Jugador(String nombre) {
         this.nombre = nombre;
+        this.fichas = new Ficha[12];
     }
 
     public String getNombre() {
@@ -62,7 +65,18 @@ public class Jugador {
             perdidas--;
         }
     }
+
+    public Ficha[] getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(Ficha[] fichas) {
+        this.fichas = fichas;
+    }
+
+    
     //    NOMBRE     PUNTUACION    PARTIDAS JUGADAS    GANADAS     PERDIDAS
     //Manuel Rojas       7                15             14           12    
+
     
 }
