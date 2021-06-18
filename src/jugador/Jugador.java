@@ -49,9 +49,9 @@ public class Jugador {
 
     public String getInfo() {
         String nombreS = ManejoInfo.llenarEspacio(nombre, 19);
-        String puntuacionS = ManejoInfo.llenarEspacio(Integer.toString(puntuacion), 16);
+        String puntuacionS = ManejoInfo.llenarEspacio(Integer.toString(puntuacion), 20);
         String partidasJugadas = ManejoInfo.llenarEspacio(Integer.toString(ganadas+perdidas), 13);
-        String ganadasS = ManejoInfo.llenarEspacio(Integer.toString(ganadas), 11);
+        String ganadasS = ManejoInfo.llenarEspacio(Integer.toString(ganadas), 12);
         return nombreS + puntuacionS + partidasJugadas + ganadasS + perdidas;
     }
 

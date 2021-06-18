@@ -5,12 +5,13 @@ import src.jugador.VectorJugador;
 public class Principal {
     public static void main(String[] args) {
         Principal p = new Principal();
-        
     }
+
     VectorJugador tablaJugadores;
 
     public Principal(){
         tablaJugadores = new VectorJugador();
+        menuPrincipal();
 
     }
 
@@ -18,8 +19,7 @@ public class Principal {
         int opcion;
         boolean salir = false;
         while (!salir) {
-            System.out.println(margenes(40));
-            System.out.println(margenes(18) + "MENU" + margenes(18));
+            System.out.println("\n" + margenes(18) + "MENU" + margenes(18));
             System.out.println("1) Jugar \n2) Nuevo Jugador \n3) Mostrar Jugadores \n4) Salir");
             System.out.println(margenes(40));
             opcion = ManejoInfo.getEntero("una opcion");

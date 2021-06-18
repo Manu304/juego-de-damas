@@ -19,12 +19,11 @@ public class VectorJugador {
     }
 
     public void mostrarJugadores() {
-        System.out.println("\n" + Principal.margenes(22) + "JUGADORES REGISTRADOS" + Principal.margenes(23));
+        System.out.println("\n" + Principal.margenes(25) + "JUGADORES REGISTRADOS" + Principal.margenes(26));
         System.out.println("    NOMBRE     PUNTUACION    PARTIDAS JUGADAS    GANADAS     PERDIDAS");
-        System.out.println(Principal.margenes(66));
+        System.out.println(Principal.margenes(72));
         for (int i = 0; i < indiceJugador; i++) {
             System.out.println(jugadores[i].getInfo());
         }
-        System.out.println(Principal.margenes(66));
     }
 }
