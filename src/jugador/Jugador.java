@@ -1,5 +1,7 @@
 package src.jugador;
 
+import src.juego.ManejoInfo;
+
 public class Jugador {
 
     private String nombre;
@@ -45,6 +47,14 @@ public class Jugador {
         }
     }
 
+    public String getInfo() {
+        String nombreS = ManejoInfo.llenarEspacio(nombre, 19);
+        String puntuacionS = ManejoInfo.llenarEspacio(Integer.toString(puntuacion), 16);
+        String partidasJugadas = ManejoInfo.llenarEspacio(Integer.toString(ganadas+perdidas), 13);
+        String ganadasS = ManejoInfo.llenarEspacio(Integer.toString(ganadas), 11);
+        return nombreS + puntuacionS + partidasJugadas + ganadasS + perdidas;
+    }
+
     public void setPartidas(boolean gano){
         if (gano) {
             ganadas++;
@@ -52,12 +62,7 @@ public class Jugador {
             perdidas--;
         }
     }
-
-    @Override
-    public String toString() {
-        return nombre;
-    }
-
-    
+    //    NOMBRE     PUNTUACION    PARTIDAS JUGADAS    GANADAS     PERDIDAS
+    //Manuel Rojas       7                15             14           12    
     
 }

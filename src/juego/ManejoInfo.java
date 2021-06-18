@@ -34,4 +34,11 @@ public class ManejoInfo {
         int aleatorio = (int) Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
         return aleatorio;
     }
+
+    public static String llenarEspacio(String palabra, int max){
+        while (palabra.length() < max) {
+            palabra += " ";
+        }
+        return palabra;
+    }
 }
