@@ -48,9 +48,14 @@ public class Casilla {
         return ficha;
     }
 
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
-        ocupada = true;
+    public void setFicha(Ficha fichaR) {
+        if (fichaR == null) {
+            ocupada = false;
+        } else {
+            ocupada = true;
+        }
+        this.ficha = fichaR;
+        
     }
 
     
