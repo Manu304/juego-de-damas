@@ -9,7 +9,7 @@ public class Ficha {
 
     @Override
     public String toString() {
-        return color + "O" + Color.RESET;
+        return color + "@" + Color.RESET;
     }
 
     

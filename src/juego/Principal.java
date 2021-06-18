@@ -1,6 +1,7 @@
 package src.juego;
 
 import src.jugador.VectorJugador;
+import src.tablero.Tablero;
 
 public class Principal {
     public static void main(String[] args) {
@@ -8,9 +9,11 @@ public class Principal {
     }
 
     VectorJugador tablaJugadores;
+    Tablero tablero;
 
     public Principal(){
         tablaJugadores = new VectorJugador();
+        tablero = new Tablero();
         menuPrincipal();
 
     }
@@ -24,7 +27,7 @@ public class Principal {
             System.out.println(margenes(40));
             opcion = ManejoInfo.getEntero("una opcion");
             switch (opcion) {
-                case 1 -> {System.out.println("Quiere jugar");}
+                case 1 -> {tablero.dibujarTablero();}
                 case 2 -> {tablaJugadores.registrarJugador();}
                 case 3 -> {tablaJugadores.mostrarJugadores();}
                 case 4 -> {salir = true; System.out.println("\nVuelve pronto :)\n");}

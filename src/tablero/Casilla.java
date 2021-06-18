@@ -10,24 +10,10 @@ public class Casilla {
         this.color = color;
     }
 
-    
-
     public Casilla(String color, Ficha ficha) {
         this.color = color;
         this.ficha = ficha;
         this.ocupada = true;
-    }
-    
-    public String getLineaVacia() {
-        return color + "   " + Color.RESET;
-    }
-    public String getLineaLlena() {
-        if (ocupada) {
-            return color + " "+ ficha + " " + Color.RESET;
-        } else {
-            return getLineaVacia();
-        }
-        
     }
 
     public boolean isOcupada() {
@@ -45,5 +31,30 @@ public class Casilla {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public String getTop(){
+        return color + "       " + Color.RESET;
+    }
+
+    public String getMedio(){
+        if (ocupada) {
+            return color + "   " + ficha + color + "   " + Color.RESET;
+        } else {
+            return getTop();
+        }
+    }
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+        ocupada = true;
+    }
+
+    
+
+    
     
 }
