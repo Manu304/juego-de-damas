@@ -1,5 +1,7 @@
 package src.tablero;
 
+import src.juego.ManejoInfo;
+
 public class Tablero {
 
     Casilla[][] casillas = new Casilla[8][8];
@@ -41,9 +43,13 @@ public class Tablero {
     }
 
     public void refrescarTablero() {
+        System.out.println("     A      B      C      D      E      F      G      H");
         for (int i = 0; i < casillas.length; i++) {
+            System.out.print("  ");
             dibujarTopLinea(i);
+            System.out.print((i+1) +" ");
             dibujarMedio(i);
+            System.out.print("  ");
             dibujarTopLinea(i);
         }
     }
@@ -61,6 +67,7 @@ public class Tablero {
         // for (int j = 0; j < 3; j++) {
         for (int i = 0; i < casillas[0].length; i++) {
             System.out.print(casillas[fila][i].getMedio());
+            
         }
         System.out.println();
         // }
