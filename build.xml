@@ -9,7 +9,7 @@ Ejemplo sencillo de utilización de ant para compilación
 <property name="dist" location ="dist" />
 <property name="javadoc" location ="javadoc" />
 <!-- nombre para el jar -->
-<property name="nameDist" location ="MyApp" />
+<property name="nameDist" location ="Damas" />
 <target name="init" >
 <!-- generamos un timestamp -->
 <tstamp />
@@ -28,7 +28,7 @@ Ejemplo sencillo de utilización de ant para compilación
 <!-- Creamos el directorio dist/lib -->
 <mkdir dir="${dist}/lib" />
 <!-- Agregamos todo lo que hay en ${build} en ${nameDist}-${DSTAMP}.jar -->
-<jar jarfile ="${dist}/lib/MyApp-${DSTAMP}.jar" basedir ="${build}" >
+<jar jarfile ="${dist}/lib/Damas-${DSTAMP}.jar" basedir ="${build}" >
 <manifest >
 <attribute name="Main-Class" value ="src/juego/Principal" />
 </manifest >
@@ -44,7 +44,7 @@ Ejemplo sencillo de utilización de ant para compilación
 </target >
 <!-- Ejecutando el jar -->
 <target name="run" depends ="jar" >
-<java jar="${dist}/lib/MyApp-${DSTAMP}.jar" fork="true" />
+<java jar="${dist}/lib/Damas-${DSTAMP}.jar" fork="true" />
 </target >
 <!-- Eliminamos los directorios ${build} y ${dist} -->
 <target name="clean" description ="Eliminando todos los directorios" >
