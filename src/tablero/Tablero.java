@@ -1,7 +1,5 @@
 package src.tablero;
 
-import src.juego.ManejoInfo;
-
 public class Tablero {
 
     Casilla[][] casillas = new Casilla[8][8];
@@ -19,7 +17,7 @@ public class Tablero {
         System.out.println();
         fichasIniciales(fichasJugador, false);
         fichasIniciales(fichasOponente, true);
-        System.out.println("\n---------------TABLERO DE DAMAS ESPAÑOLAS----------------\n");
+        System.out.println("\n------------------TABLERO DE DAMAS ESPAÑOLAS-------------------\n");
         refrescarTablero();
 
     }
@@ -54,7 +52,7 @@ public class Tablero {
         }
     }
 
-    public void dibujarTopLinea(int fila) {
+    private void dibujarTopLinea(int fila) {
         // for (int j = 0; j < 3; j++) {
         for (int i = 0; i < casillas[0].length; i++) {
             System.out.print(casillas[fila][i].getTop());
@@ -63,7 +61,7 @@ public class Tablero {
         // }
     }
 
-    public void dibujarMedio(int fila) {
+    private void dibujarMedio(int fila) {
         // for (int j = 0; j < 3; j++) {
         for (int i = 0; i < casillas[0].length; i++) {
             System.out.print(casillas[fila][i].getMedio());
@@ -84,10 +82,6 @@ public class Tablero {
 
             }
         }
-    }
-
-    public void colocarFicha(Ficha[] fichas, int fila, int columna) {
-        casillas[fila][columna].setFicha(fichas[0]);
     }
 
     public void crearFichas(Ficha[] fichas, String color) {
