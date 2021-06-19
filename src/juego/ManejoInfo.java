@@ -1,5 +1,6 @@
 package src.juego;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ManejoInfo {
@@ -10,23 +11,33 @@ public class ManejoInfo {
     }
 
     public static int getEntero(String mensaje) {
-        imprimirMensaje(mensaje);
-        int tmp = scanner.nextInt();
-        if (tmp < 0) {
-            do {
-                imprimirMensaje("\nERROR. No puede ingresar números negativos\n");
-                imprimirMensaje(mensaje);
-                tmp = scanner.nextInt();
-            } while (tmp < 0);
-        }
+        int numero = -1;
+        
+        do {
+            try {
+                System.out.print("Ingrese " + " " + mensaje + ": ");
+                int ingresado = scanner.nextInt();
+                if (ingresado < 0) {
+                    System.out.println("\nNo puede ingresar un valor negativo\n");
+                }
+                numero = ingresado;
 
-        return tmp;
+            } catch (InputMismatchException e) {
+                System.out.println("\nERROR. Debes de ingresar un numero\n");
+                scanner.nextLine();
+                numero = -1;
+            }
+        } while (numero < 0);
+        return numero;
     }
 
     public static String getTexto(String mensaje) {
         imprimirMensaje(mensaje);
         scanner.nextLine();
         String res = scanner.nextLine().toLowerCase().trim();
+        if (res.length() > 11) {
+            res = res.substring(0, 10);
+        }
         return res;
     }
 

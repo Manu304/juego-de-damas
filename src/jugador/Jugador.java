@@ -51,10 +51,10 @@ public class Jugador {
     }
 
     public String getInfo() {
-        String nombreS = ManejoInfo.llenarEspacio(nombre, 19);
-        String puntuacionS = ManejoInfo.llenarEspacio(Integer.toString(puntuacion), 20);
-        String partidasJugadas = ManejoInfo.llenarEspacio(Integer.toString(ganadas+perdidas), 13);
-        String ganadasS = ManejoInfo.llenarEspacio(Integer.toString(ganadas), 12);
+        String nombreS = ManejoInfo.llenarEspacio(nombre, 16);
+        String puntuacionS = ManejoInfo.llenarEspacio(Integer.toString(puntuacion), 17);
+        String partidasJugadas = ManejoInfo.llenarEspacio(Integer.toString(ganadas+perdidas), 15);
+        String ganadasS = ManejoInfo.llenarEspacio(Integer.toString(ganadas), 13);
         return nombreS + puntuacionS + partidasJugadas + ganadasS + perdidas;
     }
 

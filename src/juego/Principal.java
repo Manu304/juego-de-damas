@@ -22,9 +22,9 @@ public class Principal {
         int opcion;
         boolean salir = false;
         while (!salir) {
-            System.out.println("\n" + margenes(18) + "MENU" + margenes(18));
+            System.out.println("\n" + margenes(20) + "MENU" + margenes(21));
             System.out.println("1) Jugar \n2) Nuevo Jugador \n3) Mostrar Jugadores \n4) Salir");
-            System.out.println(margenes(40));
+            System.out.println(margenes(45));
             opcion = ManejoInfo.getEntero("una opcion");
             switch (opcion) {
                 case 1 -> {tablero.dibujarTablero();}
