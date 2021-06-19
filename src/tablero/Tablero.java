@@ -13,7 +13,7 @@ public class Tablero {
     public void dibujarTablero() {
         crearFichas(fichasJugador, Color.BLACK);
         crearFichas(fichasOponente, Color.RED);
-        llenarCasillas();
+        crearTablero();
         System.out.println();
         fichasIniciales(fichasJugador, false);
         fichasIniciales(fichasOponente, true);
@@ -71,13 +71,17 @@ public class Tablero {
         // }
     }
 
-    public void llenarCasillas() {
+    public void crearTablero(){
+        crearTablero(Color.getColor());
+    }
+
+    private void crearTablero(String color) {
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[0].length; j++) {
                 if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) {
                     casillas[i][j] = new Casilla(Color.WHITE);
                 } else {
-                    casillas[i][j] = new Casilla(Color.RED);
+                    casillas[i][j] = new Casilla(color);
                 }
 
             }
