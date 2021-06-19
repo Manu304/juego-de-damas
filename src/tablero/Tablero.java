@@ -3,11 +3,12 @@ package src.tablero;
 public class Tablero {
 
     Casilla[][] casillas = new Casilla[8][8];
-    Ficha[] fichasOponente = new Ficha[12];
-    Ficha[] fichasJugador = new Ficha[12];
+    Ficha[] fichasOponente;
+    Ficha[] fichasJugador;
 
-    public Tablero() {
-
+    public Tablero(Ficha[] fichasOponente, Ficha[] fichasJugador) {
+        this.fichasJugador = fichasJugador;
+        this.fichasOponente = fichasOponente;
     }
 
     public void dibujarTablero() {

@@ -13,7 +13,7 @@ public class Principal {
 
     public Principal(){
         tablaJugadores = new VectorJugador();
-        tablero = new Tablero();
+        //tablero = new Tablero();
         menuPrincipal();
 
     }
@@ -27,7 +27,7 @@ public class Principal {
             System.out.println(margenes(45));
             opcion = ManejoInfo.getEntero("una opcion");
             switch (opcion) {
-                case 1 -> {tablero.dibujarTablero();}
+                //case 1 -> {tablero.dibujarTablero();}
                 case 2 -> {tablaJugadores.registrarJugador();}
                 case 3 -> {tablaJugadores.mostrarJugadores();}
                 case 4 -> {salir = true; System.out.println("\nVuelve pronto :)\n");}
