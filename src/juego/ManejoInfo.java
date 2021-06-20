@@ -41,6 +41,12 @@ public class ManejoInfo {
         return res;
     }
 
+    public static String getTextoSimple(String mensaje){
+        imprimirMensaje(mensaje);
+        String res = scanner.next().toUpperCase().trim();
+        return res;
+    }
+
     public static String llenarEspacio(String palabra, int max) {
         while (palabra.length() < max) {
             palabra += " ";

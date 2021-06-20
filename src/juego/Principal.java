@@ -1,7 +1,6 @@
 package src.juego;
 
 import src.jugador.VectorJugador;
-import src.tablero.Tablero;
 
 public class Principal {
     public static void main(String[] args) {
@@ -10,7 +9,6 @@ public class Principal {
 
     private Partida partida;
     private VectorJugador tablaJugadores;
-    private Tablero tablero;
 
     public Principal(){
         tablaJugadores = new VectorJugador();

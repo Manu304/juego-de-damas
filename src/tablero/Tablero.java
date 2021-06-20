@@ -14,14 +14,13 @@ public class Tablero {
     }
 
     public void dibujarTablero() {
-        //fichasIniciales(fichasJugador, false);
-        //fichasIniciales(fichasOponente, true);
-        System.out.println("\n" + Principal.margenes(20) + "TABLERO DE DAMAS ESPAÑOLAS" + Principal.margenes(20) + "\n");
+        System.out
+                .println("\n" + Principal.margenes(20) + "TABLERO DE DAMAS ESPAÑOLAS" + Principal.margenes(20) + "\n");
         refrescarTablero();
 
     }
 
-    public void fichasIniciales(Ficha [] fichas, boolean oponente){
+    public void fichasIniciales(Ficha[] fichas, boolean oponente) {
         int contadorFicha = 0;
         int inicio = 0, fin = 3;
         if (oponente) {
@@ -35,7 +34,7 @@ public class Tablero {
                     contadorFicha++;
                 }
             }
-            
+
         }
     }
 
@@ -44,7 +43,7 @@ public class Tablero {
         for (int i = 0; i < casillas.length; i++) {
             System.out.print("   ");
             dibujarTopLinea(i);
-            System.out.print(" " + (i+1) + " ");
+            System.out.print(" " + (i + 1) + " ");
             dibujarMedio(i);
             System.out.print("   ");
             dibujarTopLinea(i);
@@ -64,13 +63,13 @@ public class Tablero {
         // for (int j = 0; j < 3; j++) {
         for (int i = 0; i < casillas[0].length; i++) {
             System.out.print(casillas[fila][i].getMedio());
-            
+
         }
         System.out.println();
         // }
     }
 
-    public void crearTablero(){
+    public void crearTablero() {
         crearTablero(Color.getColor());
     }
 
@@ -91,5 +90,39 @@ public class Tablero {
         for (int i = 0; i < fichas.length; i++) {
             fichas[i] = new Ficha(color);
         }
+    }
+
+    public boolean verificarFicha(Ficha[] fichas, Ficha ficha) {
+        boolean correcto = false;
+        for (int i = 0; i < fichas.length; i++) {
+            if (fichas[i].equals(ficha)) {
+                correcto = true;
+            }
+        }
+        return correcto;
+    }
+
+    public void moverFicha(int filaIni, int columIni, int filaFin, int coluFin, Ficha[] fichasMueve) {
+        //CONSIDERAR COMPROBACIONES PARA OTRO METODO QUE LOS REQUIERA
+        if (casillas[filaIni][columIni].isOcupada() && verificarFicha(fichasMueve, casillas[filaIni][columIni].getFicha())) {
+            Casilla inicial = casillas[filaIni][columIni];
+            System.out.println("\n la ficha que voy a mover esta en fila: " + filaIni + " y columna: " + columIni);
+            if (casillas[filaFin][coluFin].isOcupada() && !verificarFicha(fichasMueve, casillas[filaFin][coluFin].getFicha())) {
+                comerFicha(inicial, casillas[filaFin][coluFin]);
+            } else if (!casillas[filaFin][coluFin].isOcupada()) {
+                casillas[filaFin][coluFin].setFicha(inicial.getFicha());
+                casillas[filaIni][columIni].setFicha(null);
+            }
+        } else {
+            System.out.println("\nLa casilla no tiene ninguna pieza tuya para mover!\n");
+        }
+
+    }
+
+    public void comerFicha(Casilla come, Casilla comida) {
+        comida.getFicha().setComida(true);
+        comida.setFicha(null);
+        comida.setFicha(come.getFicha());
+        come.setFicha(null);
     }
 }
