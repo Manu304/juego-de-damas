@@ -15,8 +15,9 @@ public class Partida {
         this.jugador2 = jugador2;
         piedraPapel();
         elegirTableroFichas();
-        movimientoJugador(jugador1);
-        movimientoJugador(jugador2);
+        //movimientoJugador(jugador1);
+        //movimientoJugador(jugador2);
+        movimientosPartida();
     }
 
     private void piedraPapel() {
@@ -72,6 +73,7 @@ public class Partida {
         String pie = datosPlayer1 + Principal.margenes(16) + "CONTRA" + Principal.margenes(16)
                 + ManejoInfo.llenarEspacio(datosPlayer2, 13);
         System.out.println(pie);
+        tablero.fichasComidas();
         System.out.println(Principal.margenes(66));
     }
 

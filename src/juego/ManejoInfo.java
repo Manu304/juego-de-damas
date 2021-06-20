@@ -53,4 +53,12 @@ public class ManejoInfo {
         }
         return palabra;
     }
+
+    public static String espacios(int cantidad){
+        String espacio = "";
+        for (int i = 0; i < cantidad; i++) {
+           espacio += " " ;
+        }
+        return espacio;
+    }
 }

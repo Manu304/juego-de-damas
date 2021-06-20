@@ -1,5 +1,6 @@
 package src.tablero;
 
+import src.juego.ManejoInfo;
 import src.juego.Principal;
 
 public class Tablero {
@@ -48,6 +49,31 @@ public class Tablero {
             System.out.print("   ");
             dibujarTopLinea(i);
         }
+    }
+
+    //COMPONER METODO QUE PRESENTA LAS FICHAS COMIDAS DE CADA UNO
+
+    public void fichasComidas(){
+        System.out.println();
+        int contadorJugador = 0;
+        for (int i = 0; i < fichasJugador.length; i++) {
+
+            if (fichasJugador[i].isComida()) {
+                System.out.print(fichasJugador[i].toString() + " " + ManejoInfo.espacios(42+(12-(contadorJugador*2))));
+                contadorJugador++;
+            }
+            if (fichasOponente[i].isComida()) {
+                if (contadorJugador == 0) {
+                    System.out.print(ManejoInfo.espacios(54));
+                }
+                System.out.print((fichasOponente[i].toString() + " "));
+                if (contadorJugador == 5) {
+                    System.out.println();
+                }
+            }
+
+        }
+        System.out.println();
     }
 
     private void dibujarTopLinea(int fila) {
