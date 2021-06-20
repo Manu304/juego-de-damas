@@ -8,8 +8,9 @@ public class Principal {
         Principal p = new Principal();
     }
 
-    VectorJugador tablaJugadores;
-    Tablero tablero;
+    private Partida partida;
+    private VectorJugador tablaJugadores;
+    private Tablero tablero;
 
     public Principal(){
         tablaJugadores = new VectorJugador();
@@ -28,10 +29,36 @@ public class Principal {
             opcion = ManejoInfo.getEntero("una opcion");
             switch (opcion) {
                 //case 1 -> {tablero.dibujarTablero();}
+                case 1 -> {iniciarPartida();}
                 case 2 -> {tablaJugadores.registrarJugador();}
                 case 3 -> {tablaJugadores.mostrarJugadores();}
                 case 4 -> {salir = true; System.out.println("\nVuelve pronto :)\n");}
                 default -> {System.out.println("Ups, esa opción no existe :c");}
+            }
+        }
+    }
+
+    private void iniciarPartida(){
+        if (tablaJugadores.getIndiceJugador() >= 2) {
+            System.out.println(margenes(14) + "INICIANDO PARTIDA" + margenes(14));
+            tablaJugadores.mostrarJugadores();
+            int primero = ManejoInfo.getEntero("el numero del primer jugador a seleccionar");
+            int segundo;
+            do {
+                segundo = ManejoInfo.getEntero("el numero del segundo jugador a seleccionar");
+                if (primero == segundo) {
+                    System.out.println("\nNo puede seleccionar al mismo jugador!\n");
+                }
+            } while (primero == segundo);
+            partida = new Partida(tablaJugadores.seleccionar(primero-1), tablaJugadores.seleccionar(segundo-1));
+            
+        } else {
+            System.out.println("\nNo hay suficientes jugadores registrados para iniciar la partida.");
+            System.out.println("Desea registrar un jugador? \n1) Si \n2) No");
+            int opcion = ManejoInfo.getEntero("una opción");
+            if (opcion == 1) {
+                tablaJugadores.registrarJugador();
+                iniciarPartida();
             }
         }
     }

@@ -1,5 +1,7 @@
 package src.tablero;
 
+import src.juego.Principal;
+
 public class Tablero {
 
     Casilla[][] casillas = new Casilla[8][8];
@@ -12,13 +14,9 @@ public class Tablero {
     }
 
     public void dibujarTablero() {
-        crearFichas(fichasJugador, Color.BLACK);
-        crearFichas(fichasOponente, Color.RED);
-        crearTablero();
-        System.out.println();
-        fichasIniciales(fichasJugador, false);
-        fichasIniciales(fichasOponente, true);
-        System.out.println("\n------------------TABLERO DE DAMAS ESPAÑOLAS-------------------\n");
+        //fichasIniciales(fichasJugador, false);
+        //fichasIniciales(fichasOponente, true);
+        System.out.println("\n" + Principal.margenes(20) + "TABLERO DE DAMAS ESPAÑOLAS" + Principal.margenes(20) + "\n");
         refrescarTablero();
 
     }
@@ -41,14 +39,14 @@ public class Tablero {
         }
     }
 
-    public void refrescarTablero() {
-        System.out.println("     A      B      C      D      E      F      G      H");
+    private void refrescarTablero() {
+        System.out.println("      A      B      C      D      E      F      G      H");
         for (int i = 0; i < casillas.length; i++) {
-            System.out.print("  ");
+            System.out.print("   ");
             dibujarTopLinea(i);
-            System.out.print((i+1) +" ");
+            System.out.print(" " + (i+1) + " ");
             dibujarMedio(i);
-            System.out.print("  ");
+            System.out.print("   ");
             dibujarTopLinea(i);
         }
     }

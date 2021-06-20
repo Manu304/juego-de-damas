@@ -20,7 +20,8 @@ public class Color {
         String seleccionado = "";
         boolean listo = false;
         do {
-            System.out.println("1) Negro \n2) Rojo \n3) Verde \n4) Amarillo \n5) Azul \n6) Morado \n7) Cyan");
+            System.out.println(muestra(BLACK) + "1) Negro" + muestra(RED) + "2) Rojo" + muestra(GREEN) + "3) Verde"
+                    + muestra(YELLOW) + "4) Amarillo" + muestra(BLUE) + "5) Azul" + muestra(PURPLE) + "6) Morado" + muestra(CYAN) + "7) Cyan");
             int opcion = ManejoInfo.getEntero("el color que desee");
             switch (opcion) {
                 case 1 -> {seleccionado = BLACK;}
@@ -34,6 +35,10 @@ public class Color {
             }
         } while (listo);
         return seleccionado;
+    }
+
+    private static String muestra(String color){
+        return "\n " + color + "  " + RESET + " ";
     }
 
 }

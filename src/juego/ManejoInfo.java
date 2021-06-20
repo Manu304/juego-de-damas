@@ -12,7 +12,7 @@ public class ManejoInfo {
 
     public static int getEntero(String mensaje) {
         int numero = -1;
-        
+
         do {
             try {
                 System.out.print("Ingrese " + " " + mensaje + ": ");
@@ -34,14 +34,14 @@ public class ManejoInfo {
     public static String getTexto(String mensaje) {
         imprimirMensaje(mensaje);
         scanner.nextLine();
-        String res = scanner.nextLine().toLowerCase().trim();
+        String res = scanner.nextLine().toUpperCase().trim();
         if (res.length() > 11) {
             res = res.substring(0, 10);
         }
         return res;
     }
 
-    public static String llenarEspacio(String palabra, int max){
+    public static String llenarEspacio(String palabra, int max) {
         while (palabra.length() < max) {
             palabra += " ";
         }
