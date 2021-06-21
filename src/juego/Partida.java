@@ -13,10 +13,12 @@ public class Partida {
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        nuevaPartida();
+    }
+
+    private void nuevaPartida(){
         piedraPapel();
         elegirTableroFichas();
-        //movimientoJugador(jugador1);
-        //movimientoJugador(jugador2);
         movimientosPartida();
     }
 
@@ -111,11 +113,35 @@ public class Partida {
     }
 
     public void movimientosPartida(){
-        boolean jugador1Pierde = finPartida(jugador1.getFichas());
-        boolean jugador2Pierde = finPartida(jugador2.getFichas());
-        while (!jugador1Pierde && !jugador2Pierde) {
+        boolean jugador1Pierde = false;
+        boolean jugador2Pierde = false;
+        while ((!jugador1Pierde && !jugador2Pierde)) {
             movimientoJugador(jugador1);
-            movimientoJugador(jugador2);
+            jugador2Pierde = finPartida(jugador2.getFichas());
+            if (!jugador2Pierde) {
+                movimientoJugador(jugador2);
+                jugador1Pierde = finPartida(jugador1.getFichas());
+            } 
+        }
+        String ganador, perdedor;
+        int punteo1 = 5, punteo2 = 2;
+        if (jugador2Pierde) {
+            ganador = jugador1.getNombre();
+            perdedor = jugador2.getNombre();
+        }else{
+            ganador = jugador2.getNombre();
+            perdedor = jugador1.getNombre();
+            punteo1 = 2;
+            punteo2 = 5;
+        }
+        jugador1.setPuntuacion(!jugador1Pierde, punteo1);
+        jugador2.setPuntuacion(!jugador2Pierde, punteo2);
+        System.out.println(ganador + " ha gando la partida! Gana 5 puntos!");
+        System.out.println("Mejor suerte para la otra " + perdedor + " has perdido 2 puntos :c");
+        System.out.println("\nQuieren iniciar otra partida? \n1) Si, queremos revancha \n2) No, vamos al menú");
+        int opcion = ManejoInfo.getEntero("una opción");
+        if (opcion == 1) {
+            nuevaPartida();
         }
     }
 
@@ -133,10 +159,10 @@ public class Partida {
             
             comprobacion1 = (filaIni % 2 == 0 && columIni % 2 == 0) || (filaIni % 2 != 0 && columIni % 2 != 0);
             comprobacion2 = (filaFin % 2 == 0 && columFin % 2 == 0) || (filaFin % 2 != 0 && columFin % 2 != 0);
-            if (!comprobacion1 && !comprobacion2) {
+            if (!comprobacion1 || !comprobacion2) {
                 System.out.println("\nNo puedes mover esas casillas!\n");
             }   
-        } while (!comprobacion1 && !comprobacion2);
+        } while (!comprobacion1 || !comprobacion2);
 
         tablero.moverFicha(filaIni, columIni, filaFin, columFin, jugadorMueve.getFichas());
         tableroPartida();
@@ -150,7 +176,7 @@ public class Partida {
                 contador++;
             }
         }
-        if (contador == (fichasEvaluar.length-1)) {
+        if (contador == (fichasEvaluar.length)) {
             acabo = true;
         }
         return acabo; 
@@ -176,8 +202,6 @@ public class Partida {
         char columnaChar = orden.charAt(1);
         return (Character.getNumericValue(columnaChar)-1);
     }
-
-
 
     private boolean validarColum(char colum) {
         boolean valido = false;

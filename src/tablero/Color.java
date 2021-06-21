@@ -34,6 +34,7 @@ public class Color {
                 default -> {System.out.println("\nEse color no está en la lista :c\n"); listo = true;}
             }
         } while (listo);
+        System.out.println("Ha seleccionado el color " + seleccionado + "  " + RESET);
         return seleccionado;
     }
 

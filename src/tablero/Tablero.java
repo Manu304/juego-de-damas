@@ -15,10 +15,8 @@ public class Tablero {
     }
 
     public void dibujarTablero() {
-        System.out
-                .println("\n" + Principal.margenes(20) + "TABLERO DE DAMAS ESPAÑOLAS" + Principal.margenes(20) + "\n");
+        System.out.println("\n" + Principal.margenes(25) + "TABLERO DE DAMAS" + Principal.margenes(25) + "\n");
         refrescarTablero();
-
     }
 
     public void fichasIniciales(Ficha[] fichas, boolean oponente) {
@@ -57,23 +55,19 @@ public class Tablero {
         System.out.println();
         int contadorJugador = 0;
         for (int i = 0; i < fichasJugador.length; i++) {
-
             if (fichasJugador[i].isComida()) {
-                System.out.print(fichasJugador[i].toString() + " " + ManejoInfo.espacios(42+(12-(contadorJugador*2))));
+                System.out.print(fichasJugador[i].toString() + " ");
                 contadorJugador++;
             }
+        }
+        System.out.print(ManejoInfo.espacios(18+(24-(contadorJugador*2))));
+        for (int i = 0; i < fichasOponente.length; i++) {
             if (fichasOponente[i].isComida()) {
-                if (contadorJugador == 0) {
-                    System.out.print(ManejoInfo.espacios(54));
-                }
                 System.out.print((fichasOponente[i].toString() + " "));
-                if (contadorJugador == 5) {
-                    System.out.println();
-                }
             }
-
         }
         System.out.println();
+
     }
 
     private void dibujarTopLinea(int fila) {
@@ -132,7 +126,6 @@ public class Tablero {
         //CONSIDERAR COMPROBACIONES PARA OTRO METODO QUE LOS REQUIERA
         if (casillas[filaIni][columIni].isOcupada() && verificarFicha(fichasMueve, casillas[filaIni][columIni].getFicha())) {
             Casilla inicial = casillas[filaIni][columIni];
-            System.out.println("\n la ficha que voy a mover esta en fila: " + filaIni + " y columna: " + columIni);
             if (casillas[filaFin][coluFin].isOcupada() && !verificarFicha(fichasMueve, casillas[filaFin][coluFin].getFicha())) {
                 comerFicha(inicial, casillas[filaFin][coluFin]);
             } else if (!casillas[filaFin][coluFin].isOcupada()) {

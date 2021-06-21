@@ -9,7 +9,7 @@ public class VectorJugador {
     private int indiceJugador = 0;
 
     public VectorJugador(){
-
+    
     }
 
     public void registrarJugador(){
@@ -25,7 +25,7 @@ public class VectorJugador {
 
     public void mostrarJugadores() {
         if (indiceJugador > 0) {
-            ordenPorGanadas(true);
+            ordenPorGanadas(false);
             System.out.println("\n" + Principal.margenes(27) + "JUGADORES REGISTRADOS" + Principal.margenes(27));
             System.out.println("No.    NOMBRE     PUNTUACION    PARTIDAS JUGADAS    GANADAS     PERDIDAS");
             System.out.println(Principal.margenes(75));

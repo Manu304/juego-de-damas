@@ -41,7 +41,9 @@ public class Jugador {
     public void setPuntuacion(boolean gano, int puntos){
         if (gano) {
             puntuacion += puntos;
+            ganadas++;
         } else {
+            perdidas++;
             if (puntuacion - puntos > 0) {
                 puntuacion -= puntos;
             } else {
@@ -58,14 +60,6 @@ public class Jugador {
         return nombreS + puntuacionS + partidasJugadas + ganadasS + perdidas;
     }
 
-    public void setPartidas(boolean gano){
-        if (gano) {
-            ganadas++;
-        }else{
-            perdidas--;
-        }
-    }
-
     public Ficha[] getFichas() {
         return fichas;
     }
@@ -77,6 +71,4 @@ public class Jugador {
     
     //    NOMBRE     PUNTUACION    PARTIDAS JUGADAS    GANADAS     PERDIDAS
     //Manuel Rojas       7                15             14           12    
-
-    
 }
