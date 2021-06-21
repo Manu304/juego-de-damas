@@ -4,7 +4,7 @@ import src.juego.ManejoInfo;
 import src.juego.Principal;
 
 public class VectorJugador {
-    private final int CANTIDAD = 5;
+    private final int CANTIDAD = 10;
     Jugador[] jugadores = new Jugador[CANTIDAD];
     private int indiceJugador = 0;
 
