@@ -49,8 +49,6 @@ public class Tablero {
         }
     }
 
-    //COMPONER METODO QUE PRESENTA LAS FICHAS COMIDAS DE CADA UNO
-
     public void fichasComidas(){
         System.out.println();
         int contadorJugador = 0;
@@ -71,22 +69,17 @@ public class Tablero {
     }
 
     private void dibujarTopLinea(int fila) {
-        // for (int j = 0; j < 3; j++) {
         for (int i = 0; i < casillas[0].length; i++) {
             System.out.print(casillas[fila][i].getTop());
         }
         System.out.println();
-        // }
     }
 
     private void dibujarMedio(int fila) {
-        // for (int j = 0; j < 3; j++) {
         for (int i = 0; i < casillas[0].length; i++) {
             System.out.print(casillas[fila][i].getMedio());
-
         }
         System.out.println();
-        // }
     }
 
     public void crearTablero() {
@@ -112,7 +105,7 @@ public class Tablero {
         }
     }
 
-    public boolean verificarFicha(Ficha[] fichas, Ficha ficha) {
+    private boolean verificarFicha(Ficha[] fichas, Ficha ficha) {
         boolean correcto = false;
         for (int i = 0; i < fichas.length; i++) {
             if (fichas[i].equals(ficha)) {
@@ -122,9 +115,19 @@ public class Tablero {
         return correcto;
     }
 
+    public boolean verificarFicha(Ficha[] fichas, int fila, int columna){
+        boolean correcto = false;
+        if(verificarFicha(fichas, casillas[fila][columna].getFicha())){
+            correcto = true;
+        }
+        return correcto;
+    }
+
+    public boolean verificarCasilla(int fila, int columna){
+        return casillas[fila][columna].isOcupada();
+    }
+
     public void moverFicha(int filaIni, int columIni, int filaFin, int coluFin, Ficha[] fichasMueve) {
-        //CONSIDERAR COMPROBACIONES PARA OTRO METODO QUE LOS REQUIERA
-        if (casillas[filaIni][columIni].isOcupada() && verificarFicha(fichasMueve, casillas[filaIni][columIni].getFicha())) {
             Casilla inicial = casillas[filaIni][columIni];
             if (casillas[filaFin][coluFin].isOcupada() && !verificarFicha(fichasMueve, casillas[filaFin][coluFin].getFicha())) {
                 comerFicha(inicial, casillas[filaFin][coluFin]);
@@ -132,9 +135,7 @@ public class Tablero {
                 casillas[filaFin][coluFin].setFicha(inicial.getFicha());
                 casillas[filaIni][columIni].setFicha(null);
             }
-        } else {
-            System.out.println("\nLa casilla no tiene ninguna pieza tuya para mover!\n");
-        }
+
 
     }
 

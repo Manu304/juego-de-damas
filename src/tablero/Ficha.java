@@ -20,7 +20,5 @@ public class Ficha {
     @Override
     public String toString() {
         return color + "@" + Color.RESET;
-    }
-
-    
+    } 
 }

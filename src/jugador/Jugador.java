@@ -67,7 +67,6 @@ public class Jugador {
     public void setFichas(Ficha[] fichas) {
         this.fichas = fichas;
     }
-
     
     //    NOMBRE     PUNTUACION    PARTIDAS JUGADAS    GANADAS     PERDIDAS
     //Manuel Rojas       7                15             14           12    

@@ -13,10 +13,10 @@ public class Partida {
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
-        nuevaPartida();
+        jugar();
     }
 
-    private void nuevaPartida(){
+    private void jugar(){
         piedraPapel();
         elegirTableroFichas();
         movimientosPartida();
@@ -112,14 +112,14 @@ public class Partida {
         return casilla;
     }
 
-    public void movimientosPartida(){
+    private void movimientosPartida(){
         boolean jugador1Pierde = false;
         boolean jugador2Pierde = false;
         while ((!jugador1Pierde && !jugador2Pierde)) {
-            movimientoJugador(jugador1);
+            movimientoJugador(jugador1, false);
             jugador2Pierde = finPartida(jugador2.getFichas());
             if (!jugador2Pierde) {
-                movimientoJugador(jugador2);
+                movimientoJugador(jugador2, true);
                 jugador1Pierde = finPartida(jugador1.getFichas());
             } 
         }
@@ -141,13 +141,13 @@ public class Partida {
         System.out.println("\nQuieren iniciar otra partida? \n1) Si, queremos revancha \n2) No, vamos al menú");
         int opcion = ManejoInfo.getEntero("una opción");
         if (opcion == 1) {
-            nuevaPartida();
+            jugar();
         }
     }
 
-    private void movimientoJugador(Jugador jugadorMueve){
+    private void movimientoJugador(Jugador jugadorMueve, boolean oponente){
         int filaIni, columIni, filaFin, columFin;
-        boolean comprobacion1, comprobacion2;
+        boolean comprobacion1, comprobacion2, comprobacion3, comprobacion4, comprobacion5;
         do {
             String mueveIniJ1 = pedirCasilla("que tiene la ficha que desea mover " + jugadorMueve.getNombre());
             String mueveFinJ1 = pedirCasilla("hacia donde quiere mover la ficha " + jugadorMueve.getNombre());
@@ -157,15 +157,33 @@ public class Partida {
             filaFin = sacarFila(mueveFinJ1);
             columFin = sacarColumna(mueveFinJ1);
             
-            comprobacion1 = (filaIni % 2 == 0 && columIni % 2 == 0) || (filaIni % 2 != 0 && columIni % 2 != 0);
+            comprobacion1 = tablero.verificarCasilla(filaIni, columIni);
             comprobacion2 = (filaFin % 2 == 0 && columFin % 2 == 0) || (filaFin % 2 != 0 && columFin % 2 != 0);
-            if (!comprobacion1 || !comprobacion2) {
+            comprobacion3 = verificarMovimiento(oponente, filaIni, columIni, filaFin, columFin);
+            comprobacion4 = tablero.verificarFicha(jugadorMueve.getFichas(), filaIni, columIni);
+            comprobacion5 = tablero.verificarFicha(jugadorMueve.getFichas(), filaFin, columFin);
+
+            if (!comprobacion1 || !comprobacion2 || !comprobacion3 || !comprobacion4 || comprobacion5) {
                 System.out.println("\nNo puedes mover esas casillas!\n");
             }   
-        } while (!comprobacion1 || !comprobacion2);
+        } while (!comprobacion1 || !comprobacion2 || !comprobacion3 || !comprobacion4 || comprobacion5);
 
         tablero.moverFicha(filaIni, columIni, filaFin, columFin, jugadorMueve.getFichas());
         tableroPartida();
+    }
+
+    private boolean verificarMovimiento(boolean oponente, int filaIni, int columnaIni, int filaFin, int columnaFin){
+        boolean correcto = false;
+        int restoFila = filaFin - filaIni;
+        int restoColum = columnaIni - columnaFin;
+
+        if (oponente) {
+            restoFila = filaIni - filaFin;
+        }
+        if ((restoFila == 1) && (restoColum == -1 || restoColum == 1)) {
+            correcto = true;
+        }
+        return correcto;
     }
 
     private boolean finPartida(Ficha[] fichasEvaluar){
